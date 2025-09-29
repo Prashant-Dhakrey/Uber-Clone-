@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
+import CaptainDataContext from '../context/CaptainContext';
 
 const CaptainSignup = () => {
 
@@ -9,14 +10,16 @@ const CaptainSignup = () => {
   const [lastName, setLastName] = useState('')
   const [captainData, setCaptainData] = useState({})
 
+  const {captain,setCaptian} = React.useContext(CaptainDataContext)
+
   const submitHandler = (e) => {
 
     e.preventDefault()
     setCaptainData({
 
-      fullName:{
-        firstName: firstName,
-        lastName: lastName
+      fullname:{
+        firstname: firstName,
+        lastname: lastName
       },
       email: email,
       password: password
@@ -92,10 +95,9 @@ const CaptainSignup = () => {
 
             />
 
-            <Link
-              to='/login'
+            <button
               className='bg-[#111] flex itme-center justify-center text-white font-semibold mb-3 rounded px-4 py-2  border w-full  text-lg placeholder:text-base '>
-              Login </Link>
+              Create Captain account  </button>
             <p className='text-center-align'> Allready have a account ? <Link to='/captainLogin' className='text-blue-600'>Login here</Link></p>
           </form>
         </div>
